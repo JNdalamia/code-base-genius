@@ -6,14 +6,14 @@ impl code_genius.start{
         repo_name = github_url.split("/")[-1].replace(".git", "");
 
         mapper_walker = root spawn repo_mapper(repo_url=github_url, repo_name=repo_name); 
-        # if(mapper_walker) {
-        #      report {
-        #     "status": "success",
-        #     "message": f"Repository '{repo_name}' is being cloned.",
-        #     "repo_name": repo_name,
-        #     "repo_url": github_url,
-        # };
-        # }
+        if(mapper_walker) {
+             report {
+            "status": "success",
+            "message": f"Repository '{repo_name}' is being cloned.",
+            "repo_name": repo_name,
+            "repo_url": github_url,
+        };
+        }
        
     } else {
         report(f"Repository {github_url} verification failed.");

@@ -2,3 +2,7 @@ byllm
 jaclang
 jac-cloud
 tree-sitter
+fastapi
+uvicorn
+jac_http
+python-dotenv

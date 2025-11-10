@@ -1,14 +1,9 @@
 import from byllm.llm { Model }
 import from dotenv { load_dotenv }
 import os;
-include utils;
-import from utils { clone_repo }
-import from utils { file_tree_generator }
-import from utils { analyze_repo_structure }
+import from utils { clone_repo, file_tree_generator, analyze_repo_structure, parse_source_file }
 
-
-
-glob llm = Model(model_name="gemini/gemini-2.0-flash");
+glob llm = Model(model_name="gemini-2.0-flash");
 
 
 enum YesNo { 
@@ -16,10 +11,10 @@ enum YesNo {
     NO = "No" 
 }
 
-# node Repo{
-#     has repo_url: str;
-#     has name: str;
-# }
+node Repo{
+     has repo_url: str;
+     has name: str;
+}
 
 
 walker code_genius{
@@ -54,7 +49,7 @@ walker repo_mapper{
     Looks for a standard README file and return its summary.
     If no README is found, create summary of 3-5 sentence of repo  .
     '''   
-    def summairize_repo(repo_url : str) -> str by llm();
+    def summarize_repo(repo_url : str) -> str by llm();
 
   
     can start with `root entry;
